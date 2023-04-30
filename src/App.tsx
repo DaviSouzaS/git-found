@@ -1,6 +1,10 @@
+import { MainRoutes } from "./routes"
+
 function App() {
   return (
-    <h1>Git Found</h1>
+    <div>
+      <MainRoutes/>
+    </div>
   )
 }
 
