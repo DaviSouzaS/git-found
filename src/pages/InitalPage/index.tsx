@@ -1,10 +1,10 @@
-import { Footer } from "../../components/footer"
+import { Footer } from "../../components/Footer";
 
 export const InitalPage = () => {
-    return (
+  return (
     <>
-    <h1>Inital Page</h1>
-    <Footer/>
+      <h1>Inital Page</h1>
+      <Footer />
     </>
-    )
-}
+  );
+};

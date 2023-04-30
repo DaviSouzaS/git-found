@@ -1,10 +1,10 @@
-import { Footer } from "../../components/footer"
+import { Footer } from "../../components/Footer";
 
 export const UserPage = () => {
-    return (
+  return (
     <>
-    <h1>User Page</h1>
-    <Footer/>
+      <h1>User Page</h1>
+      <Footer />
     </>
-    )
-}
+  );
+};
