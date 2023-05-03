@@ -7,10 +7,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
-
 export const InitalPage = () => {
 
-    const { getUserInfos, searchError, getUserRepositories }: any = useContext(UserContext)
+    const { getUserInfos, searchError, getUserRepositories, addUsersInHistoric }: any = useContext(UserContext)
 
     const formSchema = yup.object().shape({
         search: yup.string().required("Insira o nome de algum usuário"),
@@ -23,6 +22,7 @@ export const InitalPage = () => {
     const search = async (data:FieldValues) => {
         await getUserInfos(data)
         await getUserRepositories(data)
+        addUsersInHistoric()
     }
 
   return (
