@@ -4,12 +4,13 @@ import { Button } from "../../components/Button";
 import * as yup from 'yup';
 import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { HistoricModal } from "../../components/HistoricModal";
 
 export const InitalPage = () => {
 
-    const { getUserInfos, searchError, getUserRepositories, addUsersInHistoric }: any = useContext(UserContext)
+    const { getUserInfos, searchError, getUserRepositories, addUsersInHistoric, openHistoricModal, openModal, historic }: any = useContext(UserContext)
 
     const formSchema = yup.object().shape({
         search: yup.string().required("Insira o nome de algum usuário"),
@@ -23,10 +24,14 @@ export const InitalPage = () => {
         await getUserInfos(data)
         await getUserRepositories(data)
         addUsersInHistoric()
+
+        console.log(historic)
+
     }
 
   return (
     <>
+        {openModal && <HistoricModal/>}
         <div>
             <img src="../src/assets/logo-gitfound.png" alt="gitfound-logo" />
             <h1>Git Found</h1>
@@ -38,7 +43,7 @@ export const InitalPage = () => {
             {searchError === 404 && <p>Usuário não encontrado</p>}
             <div>
                 <Button type="submit" content="Pesquisar"/>
-                <Button type="button" content="Histórico"/>
+                <Button type="button" content="Histórico" onclick={openHistoricModal}/>
             </div>
         </form>
 
