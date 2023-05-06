@@ -4,13 +4,13 @@ import { Button } from "../../components/Button";
 import * as yup from 'yup';
 import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { HistoricModal } from "../../components/HistoricModal";
 
 export const InitalPage = () => {
 
-    const { getUserInfos, searchError, getUserRepositories, addUsersInHistoric, openHistoricModal, openModal, historic }: any = useContext(UserContext)
+    const { getUserInfos, searchError, getUserRepositories, addUsersInHistoric, openHistoricModal, openModal, search }: any = useContext(UserContext)
 
     const formSchema = yup.object().shape({
         search: yup.string().required("Insira o nome de algum usuário"),
@@ -19,15 +19,6 @@ export const InitalPage = () => {
     const { register, handleSubmit, formState: {errors} }: FieldValues = useForm({
         resolver: yupResolver(formSchema)
     });
-
-    const search = async (data:FieldValues) => {
-        await getUserInfos(data)
-        await getUserRepositories(data)
-        addUsersInHistoric()
-
-        console.log(historic)
-
-    }
 
   return (
     <>
@@ -39,7 +30,7 @@ export const InitalPage = () => {
 
         <form onSubmit={handleSubmit(search)}>
             <SearchBar register={register}/>
-            {errors.search?.message}
+            <p>{errors.search?.message}</p>
             {searchError === 404 && <p>Usuário não encontrado</p>}
             <div>
                 <Button type="submit" content="Pesquisar"/>

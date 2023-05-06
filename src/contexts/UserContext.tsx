@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { api } from "../services/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FieldValues } from "react-hook-form";
 
 export const UserContext = createContext({})
 
@@ -28,6 +29,7 @@ export const UserProvider = ({children}: any) => {
             const { data } = await api.get(`users/${username.search}/repos`)
             localStorage.setItem('REPOS', JSON.stringify(data));
             navigate("/user")
+            setSearchError(null)
             setOpenModal(false)
         }
         catch (error){
@@ -42,12 +44,12 @@ export const UserProvider = ({children}: any) => {
        
         const userExistInHistoric = historic.find(item => item.id === user.id)
 
-
         if (!userExistInHistoric && historic.length <= 10) {
             setHistoric([user, ...historic])
         }
 
     }
+
     const historicStorage = JSON.parse(localStorage.getItem('HISTORIC'))
 
     if (historic.length === 0 && historicStorage !== null) {
@@ -66,8 +68,15 @@ export const UserProvider = ({children}: any) => {
         setOpenModal(false)
     }
 
+    const search = async (data: string) => {
+        await getUserInfos(data)
+        await getUserRepositories(data)
+        addUsersInHistoric()
+    }
+
+
     return(
-        <UserContext.Provider value={{getUserInfos, searchError, getUserRepositories, addUsersInHistoric, historic, openHistoricModal, closeHistoricModal, openModal, setHistoric}}>
+        <UserContext.Provider value={{getUserInfos, searchError, getUserRepositories, addUsersInHistoric, historic, openHistoricModal, closeHistoricModal, openModal, setHistoric, search}}>
             {children}
         </UserContext.Provider>
     )
