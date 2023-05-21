@@ -16,19 +16,26 @@ export const HistoricModal = () => {
     }
 
     return (
-        <div>
-            <div>
-                <div>
-                    <span>
-                        <p>HISTÓRICO ({repos !== null ? repos.length : 0})</p>
+        <div className="bg-modalBg fixed h-screen w-full flex justify-center items-center">
+            <div className="w-11/12 h-96 bg-one rounded-xl max-w-xl absolute">
+                <div className="p-4">
+                    <span className="flex justify-between items-center h-8 mb-3">
+                        <p className="font-bold text-lg text-white">HISTÓRICO ({repos !== null ? repos.length : 0})</p>
                         <button onClick={closeHistoricModal}>
-                            <img src="../src/assets/close.svg" alt="close-icon" />
+                            <svg className="w-8 hover:fill-white transition" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" fill="#C4CCD4"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
                         </button>
                     </span>
-                    <ul>
-                        {repos !== null ? repos.map(repo => <UserCard key={repo.id} userInfos={repo}/>) : <p>Histórico Vazio</p>}
+                    <hr className="mb-4 border-four"/>
+                    <ul className="h-60 overflow-y-scroll flex flex-col gap-4 scrollbar-thin scrollbar-thumb-five pr-1">
+                        {repos !== null ? repos.map(repo => <UserCard key={repo.id} userInfos={repo}/>) : 
+                        <div className="w-full h-full flex justify-center items-center">
+                            <p className="text-lg text-white">Histórico Vazio</p>
+                        </div>}
                     </ul>
-                    <button onClick={clearHistoric}>Limpar histórico</button>
+                    <hr className="mb-4 mt-4 border-four"/>
+                    <div className="flex justify-end">
+                        <button className="text-eight" onClick={clearHistoric}>Limpar histórico</button>
+                    </div>
                 </div>
             </div>
         </div>

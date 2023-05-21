@@ -26,9 +26,8 @@ export const InitalPage = () => {
 
   return (
     <div className="flex flex-col justify-between h-screen">
-
+      {openModal && <HistoricModal />}
       <div className="flex flex-col">
-        {openModal && <HistoricModal />}
         <div className="flex justify-center items-center mt-10">
           <img className="w-32 sm:w-60" src="../src/assets/logo-gitfound.png" alt="gitfound-logo" />
           <h1 className="text-white text-4xl sm:text-6xl font-inter font-bold">Git Found</h1>

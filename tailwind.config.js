@@ -14,13 +14,17 @@ export default {
         five: '#363B42',
         six: '#C4CCD4',
         seven: '#EAEEF2',
-        eight: '#2581F7'
+        eight: '#2581F7',
+        modalBg: '#000000b3'
       },
       fontFamily: {
         'inter': ["Inter, sans-serif"]
+      },
+      minHeight: {
+        '56': '56px',
       }
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')],
 }
 
