@@ -11,6 +11,7 @@ export const RepositoriesList = () => {
             </div>
             <div className="flex justify-center">
                 <ul className="flex flex-wrap justify-center gap-2 sm:gap-5 h-96 overflow-y-scroll max-w-xl lg:max-w-2xl scrollbar-thin scrollbar-thumb-five">
+                    { repos.length === 0 && <div className="flex items-center text-six font-bold text-base"> <p>Usuário sem repositórios públicos</p> </div> }
                     { repos.map(repo => <RepositoryCard key={repo.id} repo={repo}/>) }
                 </ul>
             </div>
