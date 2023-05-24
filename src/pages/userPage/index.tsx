@@ -8,10 +8,12 @@ export const UserPage = () => {
   const user = JSON.parse(localStorage.getItem('USER'))
   const repos = JSON.parse(localStorage.getItem('REPOS'))
   
-  return user === null || repos === null ? <Navigate to="/"/> : <>
-    <UserPageHeader/>
-    <RepositoriesList/>
+  return user === null || repos === null ? <Navigate to="/"/> : <div className="flex flex-col justify-between h-full">
+    <div>
+      <UserPageHeader/>
+      <RepositoriesList/>
+    </div>
     <Footer/>
-  </>
+  </div>
   
 };

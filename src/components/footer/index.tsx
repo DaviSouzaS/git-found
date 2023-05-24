@@ -1,16 +1,26 @@
 export const Footer = () => {
-    return (
-        <footer className="flex justify-center">
-
-            <div className="flex items-center w-11/12 justify-between">
-                <div className="flex justify-center mt-2 mb-2 gap-x-4 ml-5">
-
-                    <a href="https://github.com/DaviSouzaS" target="_blank">
-                        <svg className="w-9 hover:fill-six transition" version="1.0" xmlns="http://www.w3.org/2000/svg" fill="#363B42"
-                        width="48pt" height="48pt" viewBox="0 0 512.000000 512.000000"
-                        preserveAspectRatio="xMidYMid meet">
-                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
-                        <path d="M2360 5049 c-154 -11 -357 -47 -516 -93 -902 -259 -1603 -1017 -1790
+  return (
+    <footer className="flex flex-col items-center">
+      <hr className="w-11/12 border-three" />
+      <div className="flex items-center w-11/12 justify-between">
+        <div className="flex justify-center mt-2 mb-2 gap-x-4 ml-5">
+          <a href="https://github.com/DaviSouzaS" target="_blank">
+            <svg
+              className="w-9 hover:fill-six transition"
+              version="1.0"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#363B42"
+              width="48pt"
+              height="48pt"
+              viewBox="0 0 512.000000 512.000000"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <g
+                transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                stroke="none"
+              >
+                <path
+                  d="M2360 5049 c-154 -11 -357 -47 -516 -93 -902 -259 -1603 -1017 -1790
                         -1934 -136 -669 -8 -1355 354 -1908 255 -390 580 -686 968 -886 141 -73 341
                         -154 403 -164 58 -9 109 19 133 73 18 40 18 60 12 286 l-7 243 -86 -14 c-97
                         -15 -256 -9 -386 13 -105 19 -211 71 -278 139 -53 53 -67 76 -136 229 -63 139
@@ -26,17 +36,33 @@ export const Footer = () => {
                         -165 -217 -464 -366 -843 -418 l-87 -12 39 -49 c47 -60 85 -137 106 -221 14
                         -52 17 -137 20 -503 5 -490 5 -489 72 -521 46 -21 83 -15 229 42 738 284 1320
                         932 1533 1703 141 513 111 1108 -80 1601 -172 440 -475 842 -848 1122 -405
-                        303 -865 474 -1367 507 -175 12 -192 12 -375 0z"/>
-                        </g>
-                        </svg>
-                    </a>
+                        303 -865 474 -1367 507 -175 12 -192 12 -375 0z"
+                />
+              </g>
+            </svg>
+          </a>
 
-                    <a className="flex justify-center items-center" href="https://www.linkedin.com/in/davi-s-s/" target="_blank">
-                        <svg className="w-9 hover:fill-six transition" version="1.0" xmlns="http://www.w3.org/2000/svg" fill="#363B42"
-                        width="48pt" height="48pt" viewBox="0 0 512.000000 512.000000"
-                        preserveAspectRatio="xMidYMid meet">
-                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
-                        <path d="M2315 5109 c-800 -83 -1501 -518 -1927 -1196 -604 -960 -491 -2229
+          <a
+            className="flex justify-center items-center"
+            href="https://www.linkedin.com/in/davi-s-s/"
+            target="_blank"
+          >
+            <svg
+              className="w-9 hover:fill-six transition"
+              version="1.0"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#363B42"
+              width="48pt"
+              height="48pt"
+              viewBox="0 0 512.000000 512.000000"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <g
+                transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                stroke="none"
+              >
+                <path
+                  d="M2315 5109 c-800 -83 -1501 -518 -1927 -1196 -604 -960 -491 -2229
                         272 -3065 423 -463 951 -740 1585 -830 118 -17 511 -16 635 0 579 80 1097 337
                         1491 739 130 132 157 163 243 277 256 341 423 757 488 1211 17 118 17 512 0
                         630 -43 303 -122 561 -247 814 -134 268 -270 459 -483 674 -395 400 -889 649
@@ -48,13 +74,20 @@ export const Footer = () => {
                         39 -191 40 -272 2 -72 -34 -132 -96 -172 -177 l-33 -67 -3 -577 -3 -578 -310
                         0 -309 0 0 940 0 940 310 0 310 0 0 -132 1 -133 25 30 c14 17 43 51 64 77 73
                         86 217 165 345 188 71 13 269 4 340 -15z m-1737 -957 l2 -938 -315 0 -315 0 0
-                        933 c0 514 3 937 7 940 4 4 144 6 312 5 l306 -3 3 -937z"/>
-                        </g>
-                        </svg>
-                    </a>
-                </div>
-                <a className="mt-4 mb-2 text-sm text-eight hover:underline mr-5" href="https://docs.github.com/en/rest?apiVersion=2022-11-28" target="_blank">API do GitHub</a>
-            </div>
-        </footer>
-    )
-}
+                        933 c0 514 3 937 7 940 4 4 144 6 312 5 l306 -3 3 -937z"
+                />
+              </g>
+            </svg>
+          </a>
+        </div>
+        <a
+          className="mt-4 mb-2 text-sm text-eight hover:underline mr-5"
+          href="https://docs.github.com/en/rest?apiVersion=2022-11-28"
+          target="_blank"
+        >
+          API do GitHub
+        </a>
+      </div>
+    </footer>
+  );
+};

@@ -21,7 +21,14 @@ export default {
         'inter': ["Inter, sans-serif"]
       },
       minHeight: {
-        '56': '56px',
+        '56': '56px'
+      },
+      fontSize: {
+        'vs': '10px'
+      },
+      screens: {
+        'xs': '383px',
+        'ss': '544px'
       }
     },
   },

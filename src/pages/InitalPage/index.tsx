@@ -51,10 +51,6 @@ export const InitalPage = () => {
 
       <div >
 
-        <div className="flex justify-center">
-          <hr className="w-11/12 mt-32 border-three"/>
-        </div>
-
         <Footer />
       </div>
     </div>

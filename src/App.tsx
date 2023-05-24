@@ -3,7 +3,7 @@ import "./index.css"
 
 function App() {
   return (
-    <div className="bg-one h-screen">
+    <div className="bg-one h-full">
       <MainRoutes/>
     </div>
   )
