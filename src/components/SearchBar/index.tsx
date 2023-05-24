@@ -37,9 +37,9 @@ export const SearchBar = ({register}: FieldValues) => {
             <img className='w-9 ml-1' src="../src/assets/search.svg" alt="search-icon" />
 
             {buttonVoiceSearch ? 
-            <input className='w-4/5 ml-1 bg-transparent focus:outline-none placeholder-four' type="text" placeholder="Nome do usuário" {...register("search")}/> 
+            <input className='w-4/5 ml-1 bg-transparent focus:outline-none placeholder-four text-white' type="text" placeholder="Nome do usuário" {...register("search")}/> 
             : 
-            <input className='w-4/5 ml-1 bg-transparent focus:outline-none placeholder-four' type="text" placeholder="Nome do usuário" value={searchText} {...register("search")}/>} 
+            <input className='w-4/5 ml-1 bg-transparent focus:outline-none placeholder-four text-white' type="text" placeholder="Nome do usuário" value={searchText} {...register("search")}/>} 
 
             {/* CORRIGIR A ALTERAÇÃO DE COR NO INPUT DE PESQUISA, CAUSADA PELO AUTO COMPLETE */}
 
