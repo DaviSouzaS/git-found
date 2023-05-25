@@ -2,7 +2,6 @@ import { createContext } from "react";
 import { api } from "../services/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FieldValues } from "react-hook-form";
 
 export const UserContext = createContext({})
 
@@ -43,6 +42,18 @@ export const UserProvider = ({children}: any) => {
         user.repos = repos
        
         const userExistInHistoric = historic.find(item => item.id === user.id)
+
+        if (userExistInHistoric !== undefined && historic.length <= 10) {
+            const historicList = JSON.parse(localStorage.getItem('HISTORIC'))
+
+            const filtredHistoric = historicList.filter(item => item.id !== userExistInHistoric.id)
+
+            if (filtredHistoric.length === 0) {
+                localStorage.removeItem("HISTORIC")
+            }
+
+            setHistoric([user, ...filtredHistoric])
+        }
 
         if (!userExistInHistoric && historic.length <= 10) {
             setHistoric([user, ...historic])

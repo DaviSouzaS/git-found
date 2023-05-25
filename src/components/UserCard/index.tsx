@@ -4,18 +4,18 @@ import { useNavigate } from "react-router-dom"
 
 export const UserCard = ({userInfos}: any) => {
 
-    const { setHistoric, closeHistoricModal }: any = useContext(UserContext)
+    const { setHistoric, closeHistoricModal, addUsersInHistoric }: any = useContext(UserContext)
 
     const navigate = useNavigate()
 
     const deleteUserInHistoric = () => {
-        const repos = JSON.parse(localStorage.getItem('HISTORIC'))
+        const historic = JSON.parse(localStorage.getItem('HISTORIC'))
 
-        const filtredRepos = repos.filter(item => item.id !== userInfos.id)
+        const filtredHistoric = historic.filter(item => item.id !== userInfos.id)
 
-        setHistoric(filtredRepos)
+        setHistoric(filtredHistoric)
 
-        if (filtredRepos.length === 0) {
+        if (filtredHistoric.length === 0) {
             localStorage.removeItem("HISTORIC")
         }
     }
@@ -31,7 +31,8 @@ export const UserCard = ({userInfos}: any) => {
         delete infos.repos
 
         localStorage.setItem('USER', JSON.stringify(infos))
-
+        
+        addUsersInHistoric()
         navigate("/user")
         closeHistoricModal()
     }
