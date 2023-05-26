@@ -7,21 +7,17 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { HistoricModal } from "../../components/HistoricModal";
+import { iSearch } from "../../contexts/types";
 
-export const InitalPage = () => {
-  const { searchError, openHistoricModal, openModal, search }: any =
-    useContext(UserContext);
+export const InitialPage = (): JSX.Element => {
+  const { searchError, openHistoricModal, openModal, search } = useContext(UserContext);
 
   const formSchema = yup.object().shape({
     search: yup.string().required("Insira o nome de algum usuário"),
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  }: FieldValues = useForm({
-    resolver: yupResolver(formSchema),
+  const { register, handleSubmit, formState: { errors } }: FieldValues = useForm<iSearch>({
+    resolver: yupResolver(formSchema)
   });
 
   return (
@@ -35,8 +31,8 @@ export const InitalPage = () => {
 
         <form onSubmit={handleSubmit(search)} className="flex flex-col items-center mt-3">
           <SearchBar register={register} />
-          <p>{errors.search?.message}</p>
-          {searchError === 404 && <p>Usuário não encontrado</p>}
+          <p className="text-white p-1">{errors.search?.message}</p>
+          {searchError === 404 && <p className="text-white p-1">Usuário não encontrado</p>}
           <div className="mt-7 flex gap-8">
             <Button type="submit" content="Pesquisar" />
             <Button type="button" content="Histórico" onclick={openHistoricModal}

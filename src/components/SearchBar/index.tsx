@@ -1,28 +1,27 @@
-import 'regenerator-runtime/runtime'
-import { useContext, useState } from "react"
-import { FieldValues } from "react-hook-form"
-import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition"
-import { UserContext } from '../../contexts/UserContext'
+import 'regenerator-runtime/runtime';
+import { useContext, useState } from "react";
+import { FieldValues } from "react-hook-form";
+import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
+import { UserContext } from '../../contexts/UserContext';
 
-export const SearchBar = ({register}: FieldValues) => {
+export const SearchBar = ({register}: FieldValues): JSX.Element => {
+    
+    const [buttonVoiceSearch, setButtonVoiceSearch] = useState<boolean>(true)
 
     const { transcript, browserSupportsSpeechRecognition} = useSpeechRecognition()
 
-    const { search }: any = useContext(UserContext)
-
-
+    const { search } = useContext(UserContext)
+    
     if (!browserSupportsSpeechRecognition) {
         return (<p>Seu navegador não suporta esta pesquisa por audio</p>)
     }
-
-    const [buttonVoiceSearch, setButtonVoiceSearch] = useState<boolean>(true)
 
     const searchByVoice = () => {
         setButtonVoiceSearch(false)
         SpeechRecognition.startListening()
     }
 
-    const searchText = transcript.split(' ').join('')
+    const searchText: string = transcript.split(' ').join('')
 
     const stopListening = async () => {
         setButtonVoiceSearch(true)

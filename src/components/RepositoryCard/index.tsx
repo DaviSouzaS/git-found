@@ -1,4 +1,6 @@
-export const RepositoryCard = ({repo}: any) => {
+import { iRepositoryCardRequest } from "../../interfaces/repositoryCard.interface";
+
+export const RepositoryCard = ({repo}: iRepositoryCardRequest): JSX.Element => {
 
     return (
         <li className="w-36 xs:w-44 xs:h-20 ss:w-48 ss:h-24 sm:w-56 lg:w-72 lg:h-24 h-16 bg-two rounded-md border border-five">

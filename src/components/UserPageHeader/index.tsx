@@ -1,15 +1,16 @@
-import { useNavigate } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
+import { iUser } from "../../contexts/types";
 
-export const UserPageHeader = () => {
-  const navigate = useNavigate();
+export const UserPageHeader = (): JSX.Element => {
+  const navigate: NavigateFunction = useNavigate();
 
   const backToHome = () => {
     navigate("/");
   };
 
-  const user = JSON.parse(localStorage.getItem("USER"));
+  const user: iUser = JSON.parse(localStorage.getItem("USER") || '{}');
 
-  const date = new Date(user.created_at);
+  const date: Date = new Date(user.created_at);
 
   const day = String(date.getDate());
   const mounth = String(date.getMonth() + 1);

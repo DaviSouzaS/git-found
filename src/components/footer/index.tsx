@@ -1,4 +1,4 @@
-export const Footer = () => {
+export const Footer = (): JSX.Element => {
   return (
     <footer className="flex flex-col items-center">
       <hr className="w-11/12 border-three" />
