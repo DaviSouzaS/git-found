@@ -3,12 +3,11 @@ import { RepositoriesList } from "../../components/RepositoriesList";
 import { UserPageHeader } from "../../components/UserPageHeader";
 import { Navigate } from "react-router-dom";
 
-export const UserPage = () => {
+export const UserPage = (): JSX.Element => {
 
-  const user = JSON.parse(localStorage.getItem('USER'))
-  const repos = JSON.parse(localStorage.getItem('REPOS'))
+  const user: string | null = localStorage.getItem('USER')
   
-  return user === null || repos === null ? <Navigate to="/"/> : <div className="flex flex-col justify-between h-full">
+  return user === null  ? <Navigate to="/"/> : <div className="flex flex-col justify-between h-full">
     <div>
       <UserPageHeader/>
       <RepositoriesList/>

@@ -1,8 +1,9 @@
-import { RepositoryCard } from "../RepositoryCard"
+import { iRepos } from "../../contexts/types";
+import { RepositoryCard } from "../RepositoryCard";
 
-export const RepositoriesList = () => {
+export const RepositoriesList = (): JSX.Element => {
 
-    const repos = JSON.parse(localStorage.getItem('REPOS'))
+    const repos: iRepos[] = JSON.parse(localStorage.getItem('REPOS') || '[]')
 
     return (
         <div className="mb-5">

@@ -1,12 +1,13 @@
-import { useContext, useState } from "react"
-import { UserCard } from "../UserCard"
-import { UserContext } from "../../contexts/UserContext"
+import { useContext } from "react";
+import { UserCard } from "../UserCard";
+import { UserContext } from "../../contexts/UserContext";
+import { iHistoricRepos } from "../../contexts/types";
 
-export const HistoricModal = () => {
+export const HistoricModal = (): JSX.Element => {
 
-    const { closeHistoricModal, setHistoric }: any = useContext(UserContext)
+    const { closeHistoricModal, setHistoric } = useContext(UserContext)
 
-    const repos = JSON.parse(localStorage.getItem('HISTORIC'))
+    const repos: iHistoricRepos[] = JSON.parse(localStorage.getItem('HISTORIC') || '[]')
 
     const clearHistoric = () => {
 
@@ -14,7 +15,7 @@ export const HistoricModal = () => {
 
         localStorage.removeItem("HISTORIC")
     }
-
+    
     return (
         <div className="bg-modalBg fixed h-screen w-full flex justify-center items-center">
             <div className="w-11/12 h-96 bg-one rounded-xl max-w-xl absolute">
@@ -27,7 +28,7 @@ export const HistoricModal = () => {
                     </span>
                     <hr className="mb-4 border-four"/>
                     <ul className="h-60 overflow-y-scroll flex flex-col gap-4 scrollbar-thin scrollbar-thumb-five pr-1">
-                        {repos !== null ? repos.map(repo => <UserCard key={repo.id} userInfos={repo}/>) : 
+                        {repos.length !== 0 ? repos.map(repo => <UserCard key={repo.id} userInfos={repo}/>) : 
                         <div className="w-full h-full flex justify-center items-center">
                             <p className="text-lg text-white">Histórico Vazio</p>
                         </div>}

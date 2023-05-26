@@ -1,7 +1,7 @@
-import { MainRoutes } from "./routes"
-import "./index.css"
+import { MainRoutes } from "./routes";
+import "./index.css";
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="bg-one h-full">
       <MainRoutes/>

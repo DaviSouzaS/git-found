@@ -1,17 +1,19 @@
-import { useContext } from "react"
-import { UserContext } from "../../contexts/UserContext"
-import { useNavigate } from "react-router-dom"
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import { NavigateFunction, useNavigate } from "react-router-dom";
+import { iHistoric, iHistoricRepos } from "../../contexts/types";
+import { iUserCardRequest } from "../../interfaces/userCard.interface";
 
-export const UserCard = ({userInfos}: any) => {
+export const UserCard = ({userInfos}: iUserCardRequest): JSX.Element => {
 
-    const { setHistoric, closeHistoricModal, addUsersInHistoric }: any = useContext(UserContext)
+    const { setHistoric, closeHistoricModal, addUsersInHistoric } = useContext(UserContext)
 
-    const navigate = useNavigate()
+    const navigate: NavigateFunction = useNavigate()
 
     const deleteUserInHistoric = () => {
-        const historic = JSON.parse(localStorage.getItem('HISTORIC'))
+        const historic: iHistoricRepos[] = JSON.parse(localStorage.getItem('HISTORIC') || '[]')
 
-        const filtredHistoric = historic.filter(item => item.id !== userInfos.id)
+        const filtredHistoric: iHistoricRepos[] = historic.filter(item => item.id !== userInfos.id)
 
         setHistoric(filtredHistoric)
 
@@ -26,7 +28,7 @@ export const UserCard = ({userInfos}: any) => {
 
         localStorage.setItem('REPOS', JSON.stringify(userInfos.repos));
 
-        const infos = userInfos
+        const infos: iHistoric = userInfos
 
         delete infos.repos
 
