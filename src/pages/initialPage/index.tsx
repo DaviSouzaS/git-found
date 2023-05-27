@@ -45,9 +45,12 @@ export const InitialPage = (): JSX.Element => {
           className="flex flex-col items-center mt-3"
         >
           <SearchBar register={register} />
-          <p className="text-white p-1">{errors.search?.message}</p>
+          {searchError !== 404 && searchError !== 403 && <p className="text-white p-1">{errors.search?.message}</p>}
           {searchError === 404 && (
             <p className="text-white p-1">Usuário não encontrado</p>
+          )}
+          {searchError === 403 && (
+            <p className="text-white text-sm p-1 text-center">Número limite de pesquisas atingido!<br/> Você pode fazer até 60 pesquisas por hora</p>
           )}
           <div className="mt-7 flex gap-8">
             <Button type="submit" content="Pesquisar" />
